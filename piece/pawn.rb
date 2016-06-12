@@ -5,7 +5,7 @@ module Piece
     end
 
     def move(pos)
-      @has_moved = true
+      @moved = true
       super(pos)
     end
 
@@ -21,6 +21,34 @@ module Piece
         s_col == (f_col + 1)
       end
     end
-  end
 
+    def moves(board)
+      arr = []
+      s_col,s_row = cr
+      if(@side == 0) #white
+        c_pos = pos + 8
+        if(!board[c_pos] && c_pos < Board.squares)
+          arr.push(c_pos)
+          if(!@moved)
+            c_pos += 8
+            if(!board[c_pos] && c_pos < Board.squares)
+              arr.push(c_pos)
+            end
+          end
+        end
+      elsif(@side == 1) #black
+        c_pos = pos - 8
+        if(!board[c_pos] && c_pos >= 0)
+          arr.push(c_pos)
+          if(!@moved)
+            c_pos -= 8
+            if(!board[c_pos] && c_pos < Board.squares)
+              arr.push(c_pos)
+            end
+          end
+        end
+      end
+      arr
+    end
+  end
 end

@@ -29,19 +29,19 @@ class Board
     end
   end
 
-  def add(piece,pos)
-    Array[pos] = piece #removes old piece if it exists
-  end
-
   def move(start, finish)
-    Array[start] = Array[finish]
+    p = board[start]
+    p.move(finish)
+    board[finish] = p
+    board[start] = nil
   end
 
   def pieces
     # white pieces
     @pieces ||= [].tap do |arr| 
-      arr.push(Piece::Rook.new(0,0), Piece::Knight.new(1,0), Piece::Bishop.new(2,0),
-               Piece::Queen.new(3,0), Piece::King.new(4,0), Piece::Bishop.new(5,0),
+      arr.push(Piece::Rook.new(0,0), Piece::Knight.new(1,0),
+               Piece::Bishop.new(2,0), Piece::Queen.new(3,0),
+               Piece::King.new(4,0), Piece::Bishop.new(5,0),
                Piece::Knight.new(6,0), Piece::Rook.new(7,0))
       # white pawns
       (0..7).each do |col|
