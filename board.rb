@@ -1,3 +1,5 @@
+require './piece.rb'
+
 class Board
   # make this a PEN or something once the program is more developed
   def initialize(array = nil)
@@ -25,8 +27,7 @@ class Board
 
   def move(start, finish)
     s_piece = Array[start]
-    f_piece = Array[finish]
-    piece.move if piece.legal(f_piece)
+    legal = piece.legal?(finish)
   end
 end
 
