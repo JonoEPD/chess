@@ -52,7 +52,7 @@ class Board
                Piece::Queen.new(59,1), Piece::Bishop.new(58,1),
                Piece::Knight.new(57,1), Piece::Rook.new(56,1))
       (0..7).each do |col|
-        arr.push(Piece::Pawn.new(56-col,1))
+        arr.push(Piece::Pawn.new(55-col,1))
       end
     end
   end
