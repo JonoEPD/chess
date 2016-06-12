@@ -109,6 +109,7 @@ class Pawn < Piece
   end
 
   def legal?(finish)
+    return false unless pos != finish
     # same row? 
     s_col,s_row = cr
     f_col,f_row = pos_to_cr(finish)

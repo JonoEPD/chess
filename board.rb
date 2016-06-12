@@ -13,12 +13,7 @@ class Board
   attr_accessor :board
 
   def setup_board
-    Array.new(Board.squares)
-    ret = [].tap do |board|
-      (0..Board.squares).each do |pos|
-        board[pos] = NullPiece.new(pos)
-      end
-    end
+    Array.new(64)
   end
 
   def add(piece,pos)
@@ -26,8 +21,7 @@ class Board
   end
 
   def move(start, finish)
-    s_piece = Array[start]
-    legal = piece.legal?(finish)
+    Array[start] = Array[finish]
   end
 end
 
