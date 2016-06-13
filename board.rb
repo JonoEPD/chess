@@ -12,7 +12,7 @@ class Board
     64
   end
 
-  attr_accessor :board
+  attr_accessor :board, :last
 
   def [](pos)
     @board[pos]
@@ -31,9 +31,12 @@ class Board
 
   def move(start, finish)
     p = board[start]
+    f = board[finish]
     p.move(finish)
+    pieces.delete(f) if f
     board[finish] = p
     board[start] = nil
+    @last = [start,finish,p]
   end
 
   def pieces

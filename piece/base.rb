@@ -31,6 +31,7 @@ module Piece
 
     def move(pos)
       @pos = pos
+      @moved = true
     end
 
     attr_reader :pos, :side
